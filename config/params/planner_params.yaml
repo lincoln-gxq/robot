@@ -1,0 +1,38 @@
+# =============================================================================
+# planner_params.yaml
+#
+# ROS2 parameter file for all sweeping-robot nodes.
+# Load with:  ros2 run <pkg> <node> --ros-args --params-file planner_params.yaml
+# =============================================================================
+
+/**:
+  ros__parameters:
+    # -------------------------------------------------------------------------
+    # coverage_planner_node
+    # -------------------------------------------------------------------------
+    algorithm: "boustrophedon"          # "boustrophedon" | "spiral"
+    robot_radius: 0.20                  # m – robot cleaning radius
+    linear_velocity: 0.30               # m/s – forward speed during coverage
+
+    # -------------------------------------------------------------------------
+    # path_tracker_node (pure pursuit)
+    # -------------------------------------------------------------------------
+    lookahead_distance: 0.50            # m
+    max_angular_velocity: 1.20          # rad/s
+    goal_tolerance: 0.15                # m – distance to declare goal reached
+    control_frequency: 20.0             # Hz
+
+    # -------------------------------------------------------------------------
+    # obstacle_avoidance_node (VFH)
+    # -------------------------------------------------------------------------
+    num_sectors: 72                     # polar histogram resolution
+    threshold: 3.0                      # obstacle density threshold
+    safety_distance: 0.30               # m – minimum clearance
+    max_scan_range: 5.0                 # m – LiDAR range used for VFH
+
+    # -------------------------------------------------------------------------
+    # state_estimator_node
+    # -------------------------------------------------------------------------
+    wheel_track: 0.30                   # m – distance between wheels
+    wheel_radius: 0.05                  # m – wheel radius
+    update_frequency: 50.0              # Hz
