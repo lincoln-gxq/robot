@@ -1,0 +1,44 @@
+# Build artifacts
+build/
+install/
+log/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.eggs/
+
+# Python virtual environments
+venv/
+env/
+.env/
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ROS2 workspace artifacts
+*.db
+*.log
+
+# Gazebo cache
+~/.gazebo/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Experiment output
+results/
+*.csv
+*.png
+*.bag
+*.bag.active
+
+# Temporary files
+/tmp/

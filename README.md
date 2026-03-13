@@ -241,24 +241,31 @@ ros2 launch simulation bringup.launch.py
 
 当前项目处于：
 
-**课题设计 / 系统规划阶段**
+**系统核心实现阶段（已完成）**
 
-目前仓库主要用于整理以下内容：
+目前仓库已包含以下内容：
 
-- 开题报告与技术文档
-- 系统架构设计
-- 覆盖路径规划思路
-- 仿真环境设计
-- ROS2 项目目录规划
+- ✅ 开题报告与技术文档（`README.md`）
+- ✅ 系统架构设计与目录结构
+- ✅ `map_tools` 功能包：二维占据栅格地图、地图工厂函数、JSON/PGM 格式读写、障碍物膨胀
+- ✅ `coverage_planner` 功能包：弓字形覆盖算法、螺旋形覆盖算法、覆盖率/漏扫率评价指标
+- ✅ `path_tracker` 功能包：纯追踪（Pure Pursuit）路径跟踪控制器
+- ✅ `obstacle_avoidance` 功能包：向量场直方图（VFH）局部避障
+- ✅ `state_estimator` 功能包：差速驱动运动学正解与数值积分
+- ✅ 仿真世界文件（空旷单房间、带静态障碍物房间）
+- ✅ 机器人 URDF 模型（含差速驱动插件、LiDAR、IMU）
+- ✅ ROS2 统一启动文件（`simulation/launch/sim.launch.py`）
+- ✅ RViz2 可视化配置（`config/rviz/sweeper.rviz`）
+- ✅ 实验评估脚本（`scripts/run_experiment.py`，支持多场景、多算法批量测试）
+- ✅ 单元测试（53 项，全部通过）
 
-后续将逐步补充：
+后续可继续补充：
 
-- 仿真世界文件
-- 机器人模型
-- ROS2 节点代码
-- 启动文件
-- 实验结果与图表
-- 项目运行说明
+- 多房间连通仿真场景
+- 动态障碍物仿真
+- 实验结果图表
+- SLAM 建图集成
+- Nav2 扩展
 
 ---
 
@@ -376,20 +383,22 @@ T = t_end - t_start
 
 ## 15. 开发任务清单
 
-### 已规划任务
+### 已完成任务
 
-- [ ] 初始化 ROS2 工作空间
-- [ ] 创建基础功能包
-- [ ] 构建仿真世界文件
-- [ ] 构建机器人模型
-- [ ] 实现地图加载
-- [ ] 实现覆盖路径规划算法
-- [ ] 实现路径跟踪控制
-- [ ] 实现局部避障逻辑
-- [ ] 配置 RViz2 显示
-- [ ] 添加统一启动文件
-- [ ] 增加实验记录脚本
-- [ ] 完善 README 和文档说明
+- [x] 初始化 ROS2 工作空间目录结构（`src/`、`simulation/`、`config/`、`test/`、`scripts/`）
+- [x] 创建基础功能包（`coverage_planner`、`path_tracker`、`obstacle_avoidance`、`state_estimator`、`map_tools`）
+- [x] 构建仿真世界文件（`empty_room.world`、`room_with_obstacles.world`）
+- [x] 构建机器人模型（`sweeper_robot/robot.urdf`，含差速驱动、LiDAR、IMU）
+- [x] 实现地图加载（`GridMap` 类，支持 JSON/PGM 格式，含障碍物膨胀）
+- [x] 实现覆盖路径规划算法（弓字形 `BoustrophedonPlanner` + 螺旋形 `SpiralPlanner`）
+- [x] 实现路径跟踪控制（纯追踪 `PurePursuitController`）
+- [x] 实现局部避障逻辑（向量场直方图 `VFHController`）
+- [x] 实现差速驱动运动学模型（`DifferentialDriveKinematics`）
+- [x] 配置 RViz2 显示（`config/rviz/sweeper.rviz`）
+- [x] 添加统一启动文件（`simulation/launch/sim.launch.py`）
+- [x] 增加实验记录脚本（`scripts/run_experiment.py`，含多场景性能评估）
+- [x] 添加单元测试（53 项测试，覆盖所有核心模块）
+- [x] 完善 README 和文档说明
 
 ### 后续扩展方向
 
